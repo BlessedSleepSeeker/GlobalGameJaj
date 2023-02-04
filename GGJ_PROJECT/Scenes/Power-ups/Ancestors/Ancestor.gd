@@ -2,7 +2,7 @@ extends Node
 
 export var firstName = ''
 export var act = ''
-export var profession = ''
+export var profession = {}
 export var positiveTrait = ''
 export var negativeTrait = ''
 
@@ -18,13 +18,19 @@ func set_name(name):
 
 func get_act():
 	return act
-func set_act(given_act):
-	act = given_act
+func set_act(givenAct):
+	act = givenAct
 	
-func get_profession():
-	return profession
-func set_profession(given_profession):
-	profession = given_profession
+func get_profession_name():
+	return profession.professionName
+func get_profession_description():
+	return profession.description
+func set_profession(professionFileName):
+	if (professionFileName == 'Professeur'):
+		var subEntityUrl = 'res://Scenes/Power-ups/Ancestors/Professions/%s.gd'
+		var professionEntity = load('res://Scenes/Power-ups/Ancestors/Professions/Profession.tscn').instance()
+		professionEntity.set_sub_entity(subEntityUrl % professionFileName)
+		profession = professionEntity
 	
 func get_positive_trait():
 	return positiveTrait
@@ -38,8 +44,9 @@ func set_negative_trait(trait):
 
 func display_ancestor_infos():
 	print('________________')	
-	print('Ancêtre : ' + get_name())
-	print('Profession : ' + get_profession())
+	print(get_name())
+	print('Profession : ' + get_profession_name())
+	print('"' + get_profession_description() + '"')
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
