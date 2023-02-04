@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Player/StateMachine.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player/States/IdleState.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/States/RollStartupState.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/States/RunState.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Player/Player.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player/States/RollActiveState.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="Player" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 2 )
+
+[node name="RollStartup" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+
+[node name="RollActive" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
