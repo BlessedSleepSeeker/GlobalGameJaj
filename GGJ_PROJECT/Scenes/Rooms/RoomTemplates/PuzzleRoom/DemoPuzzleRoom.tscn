@@ -1,0 +1,23 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Rooms/RoomTemplates/PuzzleRoom/DemoPuzzleRoom.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Rooms/Objects/Hole.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Rooms/Objects/RandomDoor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Rooms/Objects/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Rooms/Objects/BaseDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Rooms/Objects/ObjectIndestructible.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Rooms/Objects/Ground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Enemies/BaseEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Rooms/Objects/ObjectDestructible.tscn" type="PackedScene" id=9]
+
+[node name="DemoPuzzleRoom" type="Node2D"]
+script = ExtResource( 1 )
+_ground = ExtResource( 7 )
+_wall = ExtResource( 4 )
+_door_start = ExtResource( 5 )
+_hole = ExtResource( 2 )
+_object_destructible = ExtResource( 9 )
+_object_indestructible = ExtResource( 6 )
+_enemy_1 = ExtResource( 8 )
+_door_exit_1 = ExtResource( 3 )
+_door_exit_2 = ExtResource( 3 )

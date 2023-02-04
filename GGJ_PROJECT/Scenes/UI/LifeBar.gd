@@ -7,14 +7,13 @@ extends HBoxContainer
 
 export(PackedScene) var heart
 
-var max_player_life = 10
-var player_life = 3
+onready var player_vars = get_node("/root/PlayerVariables")
 
 var hearts
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in max_player_life:
+	for i in player_vars.MAX_HP:
 		add_child(heart.instance())
 	hearts = get_children()
 
@@ -24,7 +23,7 @@ func _ready():
 func _process(_delta):
 	var it = 1
 	for i in hearts:
-		if it <= player_life:
+		if it <= player_vars.HP:
 			i.fill()
 		else:
 			i.empty()

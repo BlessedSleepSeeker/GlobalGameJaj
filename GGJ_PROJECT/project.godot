@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "BaseDoor",
+"language": "GDScript",
+"path": "res://Scenes/Rooms/Objects/Door.gd"
+}, {
+"base": "Node2D",
+"class": "BaseRoom",
+"language": "GDScript",
+"path": "res://Scenes/Rooms/BaseRoom.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -30,6 +40,8 @@ _global_script_classes=[ {
 "path": "res://Scenes/Player/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"BaseDoor": "",
+"BaseRoom": "",
 "Player": "",
 "PlayerState": "",
 "State": "",
@@ -47,6 +59,7 @@ config/icon="res://icon.png"
 PlayerVariables="*res://Scenes/Singleton/PlayerVariables.gd"
 DefaultValues="*res://Scenes/Singleton/DefaultValues.gd"
 Seeding="*res://Scenes/Singleton/Seeding.gd"
+GameState="*res://Scenes/Singleton/GameState.gd"
 
 [display]
 
