@@ -3,5 +3,6 @@
 [ext_resource path="res://Assets/Fonts/sci-bi.ttf" type="DynamicFontData" id=1]
 
 [resource]
+size = 25
 extra_spacing_char = 1
 font_data = ExtResource( 1 )
