@@ -1,7 +1,6 @@
 # Idle.gd
 extends PlayerState
 
-
 var state_name = "Idle"
 
 func enter(_msg := {}) -> void:
@@ -19,3 +18,5 @@ func update(delta: float) -> void:
 		state_machine.transition_to("RollStartup")
 	if Input.is_action_pressed("attack"):
 		state_machine.transition_to("Attack")
+	if Input.is_action_pressed("interact"):
+		state_machine.transition_to("Interaction")

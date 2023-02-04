@@ -2,7 +2,6 @@
 extends PlayerState
 
 var state_name = "Cinematic"
-var frame_counter = 0
 
 func enter(_msg := {}) -> void:
 	get_parent().connect("cinematic_end", self, "_on_cinematic_end") 

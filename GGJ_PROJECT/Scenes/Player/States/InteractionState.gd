@@ -5,13 +5,18 @@ var state_name = "Interaction"
 var frame_counter = 0
 
 func enter(_msg := {}) -> void:
-	get_parent().connect("cinematic_end", self, "_on_cinematic_end") 
-
+	pass
+	
 func update(_delta: float):
 	pass
 
 func physics_update(_delta: float):
-	pass
+	player.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	frame_counter += 1
+	if frame_counter > (player.ATTACK_SPEED):
+		frame_counter = 0
+		if player.v_direction != Vector2.ZERO: 
+			state_machine.transition_to("Run")
+		else:
+			 state_machine.transition_to("Idle")
 	
-func _on_cinematic_end():
-	state_machine.transition_to("Idle")
