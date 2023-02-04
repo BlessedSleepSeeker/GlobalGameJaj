@@ -5,6 +5,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
+const VOID = -1
 const GROUND = 0
 const WALL = 1
 const DOOR_START = 2
@@ -25,38 +26,60 @@ export(Resource) var _object_destructible # 6
 export(Resource) var _object_indestructible # 7 
 
 
-export(int) var room_size_x = 10
-export(int) var room_size_y = 10
+export(int) var room_size_x = 30
+export(int) var room_size_y = 20
 
 var map_as_array : Array = []
 
-var test_map = [[1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 2, 3, 4, 5, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 6, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 7, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 0, 0, 1, 1, 1]]
+var combat_map = [
+[1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 1],
+[1, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 0, 0, 5, 5, 5, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1, 1, 1, 1, 1, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 0, 1, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1],
+[1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 1, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 0, 0, 0, 0, 0, 0, 0, 1],
+[1, 1, 1, 1, 1, 2, 1, 1, 1]]
 
 func _init():
-	var map_slice = []
-	map_slice.resize(room_size_x)
-	map_slice.fill(0)
-	map_as_array.resize(room_size_y)
-	map_as_array.fill(map_slice.duplicate())
-	print_map_array()
+	pass
+	# for i in room_size_y:
+	# 	var map_slice := []
+	# 	map_slice.resize(room_size_x)
+	# 	map_slice.fill(GROUND)
+	# 	map_as_array.append(map_slice)
+	# #print_map_array()
+	# generate_wall()
+
+
+func generate_wall():
+	pass
+	# map_as_array[0].fill(WALL)
+	# map_as_array[-1].fill(WALL)
+	# for i in map_as_array:
+	# 	i[0] = WALL
+	# 	i[-1] = WALL
 
 # Where we generate the map in the world
 func _ready():
 	var offset_x := 0
 	var offset_y := 0
 
-	for i in map_as_array:
+	for i in combat_map:
 		for j in i:
 			var tile
+			var is_void := false
 			match j:
 				GROUND:
 					tile = _ground.instance()
@@ -74,9 +97,14 @@ func _ready():
 					tile = _object_destructible.instance()
 				OBJECT_INDESTR:
 					tile = _object_indestructible.instance()
-			add_child(tile)
-			tile.position.x = offset_x
-			tile.position.y = offset_y
+				VOID:
+					is_void = true
+				_:
+					is_void = true
+			if (!is_void):
+				add_child(tile)
+				tile.position.x = offset_x
+				tile.position.y = offset_y
 			offset_x += 32
 		offset_y += 32
 		offset_x = 0

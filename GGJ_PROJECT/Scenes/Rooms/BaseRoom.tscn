@@ -9,7 +9,7 @@
 [ext_resource path="res://Scenes/Rooms/Objects/Hole.tscn" type="PackedScene" id=7]
 
 [node name="BaseRoom" type="Node2D"]
-position = Vector2( 341, 211 )
+position = Vector2( 16, 16 )
 script = ExtResource( 1 )
 _ground = ExtResource( 2 )
 _wall = ExtResource( 5 )
