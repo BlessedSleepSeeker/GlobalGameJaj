@@ -3,6 +3,7 @@ class_name PlayerState
 extends State
 
 var player: Player
+onready var player_vars = get_node("/root/PlayerVariables")
 
 func _ready() -> void:
 	# The states are children of the `Player` node so their `_ready()` callback will execute first.
