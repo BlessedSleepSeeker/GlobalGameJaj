@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Rooms/BaseRoom.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Rooms/Objects/Ground.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Rooms/Objects/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Rooms/Objects/Hole.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Enemies/BaseEnemy.tscn" type="PackedScene" id=9]
 
 [node name="BaseRoom" type="Node2D"]
 position = Vector2( 16, 16 )
@@ -20,5 +21,7 @@ _door_exit_2 = ExtResource( 6 )
 _hole = ExtResource( 7 )
 _object_destructible = ExtResource( 3 )
 _object_indestructible = ExtResource( 4 )
+_enemy_1 = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
+MOVE_SPEED = 240.0
