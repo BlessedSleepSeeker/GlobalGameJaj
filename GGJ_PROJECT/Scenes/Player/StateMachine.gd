@@ -8,6 +8,7 @@ signal transitioned(state_name)
 
 # Path to the initial active state. We export it to be able to pick the initial state in the inspector.
 export var initial_state := NodePath()
+export(String) var actual_state = "Idle"
 
 # The current active state. At the start of the game, we get the `initial_state`.
 onready var state: State = get_node(initial_state)
@@ -47,4 +48,5 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	state.exit()
 	state = get_node(target_state_name)
 	state.enter(msg)
+	actual_state = state.name
 	emit_signal("transitioned", state.name)

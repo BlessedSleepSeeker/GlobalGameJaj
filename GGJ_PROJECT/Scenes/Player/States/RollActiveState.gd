@@ -1,4 +1,4 @@
-extends State
+extends PlayerState
 
 export(String) var state_name = "RollActive"
 # Called when the node enters the scene tree for the first time.

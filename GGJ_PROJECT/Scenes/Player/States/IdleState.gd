@@ -9,5 +9,6 @@ func enter(_msg := {}) -> void:
 
 
 func update(delta: float) -> void:
-	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
+	player.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if player.v_direction != Vector2.ZERO: 
 		state_machine.transition_to("Run")
