@@ -1,7 +1,7 @@
-# CinematicState.gd
+# InteractionState.gd
 extends PlayerState
 
-var state_name = "Cinematic"
+var state_name = "Interaction"
 var frame_counter = 0
 
 func enter(_msg := {}) -> void:

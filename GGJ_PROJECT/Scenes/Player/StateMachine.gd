@@ -2,8 +2,9 @@
 # (_physics_process, _unhandled_input) to the active state.
 class_name StateMachine
 extends Node
-
 # Emitted when transitioning to a new state.
+
+signal cinematic_end
 signal transitioned(state_name)
 
 # Path to the initial active state. We export it to be able to pick the initial state in the inspector.
