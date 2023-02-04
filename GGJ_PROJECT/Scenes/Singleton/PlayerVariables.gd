@@ -1,9 +1,9 @@
 extends Node
 
 export(int) var HP = 6
-export(int) var HP_MAX = 6
-export(float) var MOVE_SPEED = 500.0
+export(float) var MOVE_SPEED = 400.0
 export(float) var ANGULAR_SPEED = PI * 4
+export(float) var ROLL_SPEED = 600.0
 
 export(int) var ROLL_STARTUP = 2
 export(int) var ROLL_ACTIVE = 14
