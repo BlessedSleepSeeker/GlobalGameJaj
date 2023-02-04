@@ -10,10 +10,10 @@ const NAMES_POOL = [
 ]
 const PROFESSIONS_POOL = [
 	{'act1': ['Professeur', 'Informaticien', 'PiloteDeLigne', 'Avocat', 'Sociologue', 'Demenageur']},
-	{'act2': ['Ouvrier', 'RenifleurDeCafe', 'Corsaire', 'Philosophe', 'Ebeniste']},
+	{'act2': ['Ouvrier', 'RenifleurDeCafe', 'Corsaire', 'PhilosopheLumiere', 'Ebeniste']},
 	{'act3': ['Paysan', 'Vigneron', 'Chevalier', 'Apothicaire', 'Bouffon', 'Explorateur']},
-	{'act4': ['Esclave', 'Conducteur de char', 'Soldat', 'Philosophe', 'Magistrat', 'AthleteOlympique']},
-	{'act5': ['Chasseur', 'Cueuilleur', 'Pecheur', 'ChefDeTribu', 'Penseur', 'Shaman']}
+	{'act4': ['Esclave', 'ConducteurDeChar', 'Soldat', 'PhilosopheAntique', 'Magistrat', 'AthleteOlympique']},
+	{'act5': ['Chasseur', 'Cueilleur', 'Pecheur', 'ChefDeTribu', 'Penseur', 'Shaman']}
 ]
 
 var availableNamesPool = NAMES_POOL.duplicate(true)
@@ -31,8 +31,8 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.seed = hash('Amogus')
 	
-	for i in 1:#range(pools.size()):
-		for j in 1:#10:
+	for i in range(pools.size()):
+		for j in 10:
 			generateAncestor(i, rng)
 
 func generateAncestor(poolIndex, rng):
@@ -81,14 +81,13 @@ func generate_profession(act, rng):
 			
 	var selectedProfessionName
 	if (availableProfessionsPool[actIndex][act].size() == 0):
-		selectedProfessionName = 'Chômeur'
+		selectedProfessionName = 'Chomeur'
 	else:
 		var randomIndex = rng.randi_range(0, availableProfessions.size() - 1)
 		selectedProfessionName = availableProfessions[randomIndex]
 		availableProfessionsPool[actIndex][act].pop_at(randomIndex)
 	
-	return 'Professeur'
-#	return selectedProfessionName
+	return selectedProfessionName
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -26,11 +26,10 @@ func get_profession_name():
 func get_profession_description():
 	return profession.description
 func set_profession(professionFileName):
-	if (professionFileName == 'Professeur'):
-		var subEntityUrl = 'res://Scenes/Power-ups/Ancestors/Professions/%s.gd'
-		var professionEntity = load('res://Scenes/Power-ups/Ancestors/Professions/Profession.tscn').instance()
-		professionEntity.set_sub_entity(subEntityUrl % professionFileName)
-		profession = professionEntity
+	var subEntityUrl = 'res://Scenes/Power-ups/Ancestors/Professions/%s.gd'
+	var professionEntity = load('res://Scenes/Power-ups/Ancestors/Professions/Profession.tscn').instance()
+	professionEntity.set_sub_entity(subEntityUrl % professionFileName)
+	profession = professionEntity
 	
 func get_positive_trait():
 	return positiveTrait
