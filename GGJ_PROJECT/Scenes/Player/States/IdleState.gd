@@ -4,6 +4,8 @@ extends PlayerState
 var state_name = "Idle"
 
 func enter(_msg := {}) -> void:
+	if _msg.has("cutscene"):
+		state_machine.transition_to("CinematicState")
 	player.velocity = Vector2.ZERO
 
 

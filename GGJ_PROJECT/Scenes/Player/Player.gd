@@ -9,7 +9,7 @@ export(int) var ROLL_STARTUP = 2
 export(int) var ROLL_ACTIVE = 14
 export(int) var ROLL_RECOVERY = 3
 
-export(int) var ATTACK_SPEED = 8
+export(int) var ATTACK_SPEED = 18
 
 var v_direction := Vector2.ZERO
 var v_rotation
