@@ -10,7 +10,6 @@ func _ready():
 func _process(delta):
 	player.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	player.v_direction.normalized()  * player.MOVE_SPEED
-	print_debug(state_name)
 	if player.v_direction == Vector2.ZERO:
 		state_machine.transition_to("Idle")
 
