@@ -24,4 +24,3 @@ _object_indestructible = ExtResource( 4 )
 _enemy_1 = ExtResource( 9 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
-MOVE_SPEED = 240.0

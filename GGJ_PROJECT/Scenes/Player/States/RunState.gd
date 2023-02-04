@@ -15,7 +15,9 @@ func update(_delta: float):
 		state_machine.transition_to("RollStartup")
 	if Input.is_action_pressed("attack"):
 		state_machine.transition_to("Attack")
-		
+	if Input.is_action_pressed("interact"):
+		state_machine.transition_to("Interaction")
+
 func physics_update(delta: float):
 	player.rotate_to_mouse(delta)
 	player_vars.velocity.x = player_vars.v_direction.x * player_vars.MOVE_SPEED
