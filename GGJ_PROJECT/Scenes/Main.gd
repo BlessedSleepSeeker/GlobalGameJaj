@@ -1,3 +1,4 @@
+#Main.gd
 extends Node
 
 var actual_state := "Actual State : "

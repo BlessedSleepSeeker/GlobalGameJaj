@@ -1,3 +1,4 @@
+#State.gd
 # Virtual base class for all states.
 class_name State
 extends Node

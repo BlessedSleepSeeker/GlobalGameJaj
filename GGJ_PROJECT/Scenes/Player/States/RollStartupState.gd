@@ -1,11 +1,13 @@
+#RollStartupState.gd
 extends PlayerState
 
-export(String) var state_name = "RollStartup"
-# Called when the node enters the scene tree for the first time.
+var state_name = "RollStartup"
+
 func _ready():
-	pass # Replace with function body.
+	player.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
+func update(delta: float):
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func physics_update(delta: float):
+	pass
