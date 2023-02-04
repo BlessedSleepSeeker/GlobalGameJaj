@@ -9,11 +9,11 @@ const NAMES_POOL = [
 	{'act5': ['Ouga', 'Bouga', 'Nega', 'Gaga', 'FF Fast']}
 ]
 const PROFESSIONS_POOL = [
-	{'act1': ['Professeur', 'Informaticien', 'Pilote de ligne', 'Avocat', 'Sociologue', 'Déménageur']},
-	{'act2': ['Ouvrier', 'Renifleur de café', 'Corsaire', 'Philosophe', 'Ebéniste']},
+	{'act1': ['Professeur', 'Informaticien', 'PiloteDeLigne', 'Avocat', 'Sociologue', 'Demenageur']},
+	{'act2': ['Ouvrier', 'RenifleurDeCafe', 'Corsaire', 'PhilosopheLumiere', 'Ebeniste']},
 	{'act3': ['Paysan', 'Vigneron', 'Chevalier', 'Apothicaire', 'Bouffon', 'Explorateur']},
-	{'act4': ['Esclave', 'Conducteur de char', 'Soldat', 'Philosophe', 'Magistrat', 'Athlète olympique']},
-	{'act5': ['Chasseur', 'Cueuilleur', 'Pêcheur', 'Chef de tribu', 'Penseur', 'Shaman']}
+	{'act4': ['Esclave', 'ConducteurDeChar', 'Soldat', 'PhilosopheAntique', 'Magistrat', 'AthleteOlympique']},
+	{'act5': ['Chasseur', 'Cueilleur', 'Pecheur', 'ChefDeTribu', 'Penseur', 'Shaman']}
 ]
 
 var availableNamesPool = NAMES_POOL.duplicate(true)
@@ -81,7 +81,7 @@ func generate_profession(act, rng):
 			
 	var selectedProfessionName
 	if (availableProfessionsPool[actIndex][act].size() == 0):
-		selectedProfessionName = 'Chômeur'
+		selectedProfessionName = 'Chomeur'
 	else:
 		var randomIndex = rng.randi_range(0, availableProfessions.size() - 1)
 		selectedProfessionName = availableProfessions[randomIndex]
