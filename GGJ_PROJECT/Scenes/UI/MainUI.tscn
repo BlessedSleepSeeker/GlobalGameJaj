@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/UI/MainUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/sci-bi.tres" type="DynamicFont" id=2]
+
+[node name="MainUI" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Margin" type="MarginContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+
+[node name="DebuggingDisplay" type="Label" parent="Margin"]
+margin_right = 80.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 2 )
+text = "TESTETEST"
