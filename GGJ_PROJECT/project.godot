@@ -45,6 +45,8 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerVariables="*res://Scenes/Singleton/PlayerVariables.gd"
+DefaultValues="*res://Scenes/Singleton/DefaultValues.gd"
+Seeding="*res://Scenes/Singleton/Seeding.gd"
 
 [display]
 
