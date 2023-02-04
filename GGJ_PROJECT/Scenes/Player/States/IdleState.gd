@@ -13,3 +13,5 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Run")
 	if Input.is_action_pressed("roll"):
 		state_machine.transition_to("RollStartup")
+	if Input.is_action_pressed("attack"):
+		state_machine.transition_to("Attack")
