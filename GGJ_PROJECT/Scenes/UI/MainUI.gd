@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+onready var player_vars = get_node("/root/PlayerVariables")
 var player
 var state_machine
 var label
@@ -16,4 +17,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var state = state_machine.state.name
-	label.text = format_string % [player.position.x, player.position.y, player.rotation, state, player.v_direction.x, player.v_direction.y]
+	label.text = format_string % [player.position.x, player.position.y, player.rotation, state, player_vars.v_direction.x, player_vars.v_direction.y]
+	

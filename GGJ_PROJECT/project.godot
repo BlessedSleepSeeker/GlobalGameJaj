@@ -42,6 +42,10 @@ config/name="GGJ_PROJECT"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerVariables="*res://Scenes/Singleton/PlayerVariables.gd"
+
 [display]
 
 window/size/width=1280

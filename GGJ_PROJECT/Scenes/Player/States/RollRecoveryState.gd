@@ -11,11 +11,11 @@ func update(_delta: float):
 	pass
 
 func physics_update(_delta: float):
-	player.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	player_vars.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	frame_counter += 1
-	if frame_counter > (player.ROLL_RECOVERY):
+	if frame_counter > (player_vars.ROLL_RECOVERY):
 		frame_counter = 0
-		if player.v_direction != Vector2.ZERO: 
+		if player_vars.v_direction != Vector2.ZERO: 
 			state_machine.transition_to("Run")
 		else:
 			 state_machine.transition_to("Idle")
