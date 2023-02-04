@@ -15,7 +15,7 @@ func physics_update(_delta: float):
 	player_vars.velocity.y = player_vars.v_direction.y * player_vars.ROLL_SPEED
 	player.move_and_slide(player_vars.velocity)
 	#TODO: Rendre invincible le personnage
-	#get_parent().get_parent().get_node("Hitbox").disabled = true
+	#get_parent().get_parent().get_node("Hurtbox").disabled = true
 	frame_counter += 1
 	if frame_counter > (player_vars.ROLL_ACTIVE):
 		frame_counter = 0

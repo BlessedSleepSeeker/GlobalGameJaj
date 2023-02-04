@@ -5,6 +5,7 @@ extends Node
 # Emitted when transitioning to a new state.
 
 signal cinematic_end
+signal enemy_hit(hit_enemy, damage_taken)
 signal transitioned(state_name)
 
 # Path to the initial active state. We export it to be able to pick the initial state in the inspector.

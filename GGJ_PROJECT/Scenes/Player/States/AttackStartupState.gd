@@ -1,7 +1,7 @@
-# AttackState.gd
+# AttackStartupState.gd
 extends PlayerState
 
-var state_name = "Attack"
+var state_name = "AttackStartup"
 var frame_counter = 0
 
 func update(_delta: float):
@@ -14,9 +14,6 @@ func physics_update(delta: float):
 	player_vars.velocity.y = player_vars.v_direction.y * player_vars.MOVE_SPEED
 	player.move_and_slide(player_vars.velocity)
 	frame_counter += 1
-	if frame_counter > (player_vars.ATTACK_SPEED):
+	if frame_counter > (player_vars.ATTACK_STARTUP):
 		frame_counter = 0
-		if player_vars.v_direction != Vector2.ZERO: 
-			state_machine.transition_to("Run")
-		else:
-			 state_machine.transition_to("Idle")
+	state_machine.transition_to("AttackActive")

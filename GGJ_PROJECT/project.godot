@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "BaseEnemy",
+"language": "GDScript",
+"path": "res://Scenes/Enemies/BaseEnemy.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/Player/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"BaseEnemy": "",
 "Player": "",
 "PlayerState": "",
 "State": "",
