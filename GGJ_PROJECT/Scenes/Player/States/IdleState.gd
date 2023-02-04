@@ -1,14 +1,19 @@
 # Idle.gd
 extends PlayerState
 
-export(String) var state_name = "Idle"
-# Upon entering the state, we set the Player node's velocity to zero.
+var state_name = "Idle"
+
 func enter(_msg := {}) -> void:
-	# We must declare all the properties we access through `owner` in the `Player.gd` script.
+	if _msg.has("cutscene"):
+		state_machine.transition_to("CinematicState")
 	player.velocity = Vector2.ZERO
 
 
-func update(delta: float) -> void:
-	player.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+func update(_delta: float) -> void:
+	player.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	if player.v_direction != Vector2.ZERO: 
 		state_machine.transition_to("Run")
+	if Input.is_action_pressed("roll"):
+		state_machine.transition_to("RollStartup")
+	if Input.is_action_pressed("attack"):
+		state_machine.transition_to("Attack")
