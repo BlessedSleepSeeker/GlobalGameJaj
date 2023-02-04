@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Power-ups/Ancestors/Professions/Profession.gd" type="Script" id=1]
+
+[node name="Profession" type="Node"]
+script = ExtResource( 1 )

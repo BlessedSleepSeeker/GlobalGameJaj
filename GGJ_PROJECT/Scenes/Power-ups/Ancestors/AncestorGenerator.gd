@@ -1,15 +1,23 @@
 extends Node
 
 const pools = ['act1', 'act2', 'act3', 'act4', 'act5']
-const namesPool = [
+const NAMES_POOL = [
 	{'act1': ['Marie', 'Mélanie', 'Emilie', 'Hélène', 'Emma', 'Johnny', 'Camille', 'Adrien', 'Antoine', 'Thomas']},
 	{'act2': ['Jacqueline', 'Jeanne', 'Huguette', 'Bernadette', 'Monique', 'Louis', 'Pierre', 'Paul', 'René', 'Georges']},
 	{'act3': ['Clotilde', 'Pétronille', 'Gerberge', 'Bathilde', 'Hermine', 'Eudes', 'Conrad', 'Folquet', 'Gaubert', 'Godefroy']},
-	{'act4': ['Amogus', 'Confucius', 'Autobus', 'Augustus', 'Asmongoldus', 'Barbus', 'Brutus', 'Abominatiogus']},
-	{'act5': ['Ouga', 'Bouga', 'Nega', 'Gaga', 'FF Fast']},
+	{'act4': ['Calliope', 'Danaé', 'Hécate', 'Pasiphaé', 'Terpsichore', 'Anaxímandros', 'Thrasymaquos', 'Marcus-Aurelius', 'Hyppolytus', 'Tybaltus']},
+	{'act5': ['Ouga', 'Bouga', 'Nega', 'Gaga', 'FF Fast']}
+]
+const PROFESSIONS_POOL = [
+	{'act1': ['Professeur', 'Informaticien', 'Pilote de ligne', 'Avocat', 'Sociologue', 'Déménageur']},
+	{'act2': ['Ouvrier', 'Renifleur de café', 'Corsaire', 'Philosophe', 'Ebéniste']},
+	{'act3': ['Paysan', 'Vigneron', 'Chevalier', 'Apothicaire', 'Bouffon', 'Explorateur']},
+	{'act4': ['Esclave', 'Conducteur de char', 'Soldat', 'Philosophe', 'Magistrat', 'Athlète olympique']},
+	{'act5': ['Chasseur', 'Cueuilleur', 'Pêcheur', 'Chef de tribu', 'Penseur', 'Shaman']}
 ]
 
-var professions = load('res://Scenes/Power-ups/Ancestors/Professions/Profession.gd').new()
+var availableNamesPool = NAMES_POOL.duplicate(true)
+var availableProfessionsPool = PROFESSIONS_POOL.duplicate(true)
 
 var pullAncestorAct1 = []
 var pullAncestorAct2 = []
@@ -24,27 +32,21 @@ func _ready():
 	rng.seed = hash('Amogus')
 	
 	for i in range(pools.size()):
-		for j in 3:
+		for j in 10:
 			generateAncestor(i, rng)
-	for uwu in range(pullAncestorAct1.size()):
-		print(pullAncestorAct1[uwu].get_name())
-		print(pullAncestorAct2[uwu].get_name())
-		print(pullAncestorAct3[uwu].get_name())
-		print(pullAncestorAct4[uwu].get_name())
-		print(pullAncestorAct5[uwu].get_name())
-
 
 func generateAncestor(poolIndex, rng):
-	var ancestor = load('res://Scenes/Power-ups/Ancestors/Ancestor.gd').new()
+	var ancestor = load('res://Scenes/Power-ups/Ancestors/Ancestor.tscn').instance()
 	var act = pools[poolIndex]
 	
 	ancestor.set_act(act)
 	ancestor.set_name(generate_name(act, rng)) # TODO : Generate name randomly according to seed
-	ancestor.set_profession(generate_profession(act, rng)) # TODO : Generate name randomly according to seed
-	push_ancestor_to_pull(ancestor)
+	ancestor.set_profession(generate_profession(act, rng)) # TODO : Generate profession randomly according to seed
+	push_ancestor_to_pool(ancestor)
 
-func push_ancestor_to_pull(ancestor):
+func push_ancestor_to_pool(ancestor):
 	var act = ancestor.get_act()
+	ancestor.display_ancestor_infos()
 	match act:
 		'act1': pullAncestorAct1.append(ancestor)
 		'act2': pullAncestorAct2.append(ancestor)
@@ -54,14 +56,39 @@ func push_ancestor_to_pull(ancestor):
 		
 func generate_name(act, rng):
 	var availableNames = ['Default']
-	for i in range(namesPool.size()):
-		if namesPool[i].has(act):
-			availableNames = namesPool[i][act]
+	var actIndex
+	for i in range(availableNamesPool.size()):
+		if availableNamesPool[i].has(act):
+			availableNames = availableNamesPool[i][act]
+			actIndex = i
 	var randomIndex = rng.randi_range(0, availableNames.size() - 1)
-	return availableNames[randomIndex]
+	var selectedName = availableNames[randomIndex]
+	
+	availableNamesPool[actIndex][act].pop_at(randomIndex)
+	if (availableNamesPool[actIndex][act].size() == 0):
+		availableNamesPool[actIndex][act] = NAMES_POOL[actIndex][act].duplicate()
+		
+	return selectedName
 	
 func generate_profession(act, rng):
-	var availablesProfessions = []
+	var availableProfessions = []
+	var actIndex
+	
+	for i in range(availableProfessionsPool.size()):
+		if availableProfessionsPool[i].has(act):
+			availableProfessions = availableProfessionsPool[i][act]
+			actIndex = i
+			
+	var selectedProfessionName
+	if (availableProfessionsPool[actIndex][act].size() == 0):
+		selectedProfessionName = 'Chômeur'
+	else:
+		var randomIndex = rng.randi_range(0, availableProfessions.size() - 1)
+		selectedProfessionName = availableProfessions[randomIndex]
+		availableProfessionsPool[actIndex][act].pop_at(randomIndex)
+	
+	return selectedProfessionName
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

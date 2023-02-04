@@ -21,7 +21,7 @@ func set_act(given_act):
 
 func get_description():
 	return description
-func set_profession(given_description):
+func set_description(given_description):
 	description = given_description
 
 

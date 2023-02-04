@@ -2,9 +2,9 @@ extends Node
 
 export var firstName = ''
 export var act = ''
-export var profession = {}
-export var positiveTrait = {}
-export var negativeTrait = {}
+export var profession = ''
+export var positiveTrait = ''
+export var negativeTrait = ''
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,8 +23,8 @@ func set_act(given_act):
 	
 func get_profession():
 	return profession
-func set_profession(profession):
-	profession = profession
+func set_profession(given_profession):
+	profession = given_profession
 	
 func get_positive_trait():
 	return positiveTrait
@@ -36,6 +36,10 @@ func get_negative_trait():
 func set_negative_trait(trait):
 	negativeTrait = trait
 
+func display_ancestor_infos():
+	print('________________')	
+	print('Ancêtre : ' + get_name())
+	print('Profession : ' + get_profession())
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
