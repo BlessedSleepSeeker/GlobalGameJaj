@@ -43,6 +43,6 @@ script = ExtResource( 7 )
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 4 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
