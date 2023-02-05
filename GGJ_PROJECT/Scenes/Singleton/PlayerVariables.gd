@@ -1,6 +1,7 @@
 extends Node
 onready var default_values = get_node("/root/DefaultValues")
 
+export(int) var MAX_HP = 6
 export(int) var HP = 6
 export(float) var MOVE_SPEED = 400.0
 export(float) var ANGULAR_SPEED = PI * 4
