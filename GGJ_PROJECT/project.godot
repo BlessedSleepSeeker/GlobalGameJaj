@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "BaseEnemy",
+"language": "GDScript",
+"path": "res://Scenes/Enemies/BaseEnemy.gd"
+}, {
+"base": "Node2D",
+"class": "BaseRoom",
+"language": "GDScript",
+"path": "res://Scenes/Rooms/BaseRoom.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -30,6 +40,8 @@ _global_script_classes=[ {
 "path": "res://Scenes/Player/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"BaseEnemy": "",
+"BaseRoom": "",
 "Player": "",
 "PlayerState": "",
 "State": "",
@@ -47,6 +59,7 @@ config/icon="res://icon.png"
 PlayerVariables="*res://Scenes/Singleton/PlayerVariables.gd"
 DefaultValues="*res://Scenes/Singleton/DefaultValues.gd"
 Seeding="*res://Scenes/Singleton/Seeding.gd"
+GameState="*res://Scenes/Singleton/GameState.gd"
 
 [display]
 
@@ -118,6 +131,12 @@ interact={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":69,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+test_button={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":84,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":84,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
