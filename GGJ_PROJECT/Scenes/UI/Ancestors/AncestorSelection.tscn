@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Fonts/sci-bi.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/UI/Ancestors/AncestorSelection.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/Ancestors/AncestorButton.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 66
+font_data = ExtResource( 1 )
+
+[node name="PopupMenu" type="Panel"]
+margin_right = 1280.0
+margin_bottom = 720.0
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 321.0
+margin_top = 66.0
+margin_right = 963.0
+margin_bottom = 139.0
+custom_fonts/font = SubResource( 1 )
+text = "Selectionnez un ancêtre"
+
+[node name="AncestorButton" parent="." instance=ExtResource( 3 )]
+margin_left = 865.0
+margin_top = 192.0
+margin_right = -95.0
+margin_bottom = -80.0
+
+[node name="AncestorButton2" parent="." instance=ExtResource( 3 )]
+margin_left = 97.0
+margin_top = 192.0
+margin_right = -863.0
+margin_bottom = -80.0
+
+[node name="AncestorButton3" parent="." instance=ExtResource( 3 )]
+margin_left = 480.0
+margin_top = 192.0
+margin_right = -480.0
+margin_bottom = -80.0

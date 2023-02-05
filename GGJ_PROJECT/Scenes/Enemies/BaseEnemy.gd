@@ -1,3 +1,4 @@
+class_name BaseEnemy
 extends Area2D
 
 
@@ -12,14 +13,17 @@ export(int) var DAMAGE = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if HP <= 0:
+		queue_free()
 
 func _on_BaseEnemy_body_entered(body: Node):
 	if body is Player:
 		body.damage(self, DAMAGE)
+		
+func take_damage(damage_taken : int):
+	HP -= damage_taken
+

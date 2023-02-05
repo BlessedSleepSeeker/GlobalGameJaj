@@ -7,6 +7,7 @@ func enter(_msg := {}) -> void:
 	if _msg.has("cutscene"):
 		state_machine.transition_to("CinematicState")
 	player_vars.velocity = Vector2.ZERO
+	get_parent().connect("past_door", self, "_on_past_door")
 
 
 func update(delta: float) -> void:
@@ -17,6 +18,10 @@ func update(delta: float) -> void:
 	if Input.is_action_pressed("roll"):
 		state_machine.transition_to("RollStartup")
 	if Input.is_action_pressed("attack"):
-		state_machine.transition_to("Attack")
+		state_machine.transition_to("AttackStartup")
 	if Input.is_action_pressed("interact"):
 		state_machine.transition_to("Interaction")
+
+func _on_past_door():
+	state_machine.transition_to("PassDoor")
+	

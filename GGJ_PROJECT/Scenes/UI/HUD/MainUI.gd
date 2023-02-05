@@ -19,5 +19,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var state = state_machine.state.name
-	label.text = format_string % [player.position.x, player.position.y, player.rotation, state, player_vars.v_direction.x, player_vars.v_direction.y, game_state.current_room_number, game_state.current_room_type]
+	label.text = format_string % [player.position.x, player.position.y, rad2deg(player.rotation), state, player_vars.v_direction.x, player_vars.v_direction.y, game_state.current_room_number, game_state.current_room_type]
 
