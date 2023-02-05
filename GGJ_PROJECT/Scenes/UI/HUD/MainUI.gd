@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+signal reset_run
 onready var player_vars = get_node("/root/PlayerVariables")
 var player
 var state_machine
@@ -21,3 +22,5 @@ func _process(_delta):
 	var state = state_machine.state.name
 	label.text = format_string % [player.position.x, player.position.y, rad2deg(player.rotation), state, player_vars.v_direction.x, player_vars.v_direction.y, game_state.current_room_number, game_state.current_room_type]
 
+func _on_PauseMenu_reset_run():
+	emit_signal("reset_run")

@@ -33,6 +33,7 @@ func _ready():
 	player_instance = player.instance()
 	player_instance.connect('death', self, '_on_Player_death')
 	ui_instance = ui.instance()
+	ui_instance.connect('reset_run', self, '_on_reset_run')
 
 	# generate first room based on random
 	switch("Fight")
@@ -101,7 +102,7 @@ func _on_SceneTransition_transitionned():
 func _on_Player_death():
 	back_to_main_menu()
 
-func on_reset_run():
+func _on_reset_run():
 	back_to_main_menu()
 
 func back_to_main_menu():

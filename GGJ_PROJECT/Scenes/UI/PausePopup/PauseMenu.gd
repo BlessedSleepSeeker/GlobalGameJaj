@@ -1,5 +1,7 @@
 extends ColorRect
 
+signal reset_run
+
 var is_paused = false setget set_is_paused
 
 func _unhandled_input(event):
@@ -15,4 +17,5 @@ func _on_UnpauseButton_pressed():
 	self.is_paused = false
 
 func _on_ResetRun_pressed():
-	get_tree().quit()
+	self.is_paused = false
+	emit_signal('reset_run')
