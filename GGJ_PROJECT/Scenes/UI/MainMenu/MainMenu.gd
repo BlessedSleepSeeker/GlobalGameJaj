@@ -4,11 +4,14 @@ extends Panel
 var familyNameLibelle = ''
 var mainScene = load('res://Scenes/Main.tscn').instance()
 var seeding
+var playerVariables
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	seeding = get_node("/root/Seeding")
 	seeding.resetSeeds()
+	playerVariables = get_node("/root/PlayerVariables")
+	playerVariables.reset_values()
 
 func _on_QuitGame_pressed():
 	get_tree().quit()
