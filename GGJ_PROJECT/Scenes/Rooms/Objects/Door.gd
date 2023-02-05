@@ -8,12 +8,11 @@ class_name BaseDoor
 
 export(bool) var is_open = false
 
-export(Texture) var open_text
-export(Texture) var closed_text
-
 onready var scene_switcher = get_tree().root.get_node("Main")
 
 var lead_to : String
+
+onready var _animated_sprite = $AnimatedSprite
 
 var game_state
 var seeding
@@ -56,19 +55,16 @@ func chose_destination():
 
 func open_door():
 	is_open = true
-	update_sprite()
+	_animated_sprite.play("opening")
 	self.connect("body_entered", self, "walked_on_door")
 
 func close_door():
 	is_open = false
-	update_sprite()
+	_animated_sprite.frame = 0
 	self.disconnect("body_entered", self, "walked_on_door")
 
 func update_sprite():
-	if is_open:
-		$Sprite.texture = open_text
-	else:
-		$Sprite.texture = closed_text
+	pass
 
 func walked_on_door(body: Node):
 	if body is Player and is_open:

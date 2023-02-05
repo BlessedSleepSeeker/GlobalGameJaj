@@ -37,6 +37,7 @@ var map_as_array : Array = []
 
 var _room_type := "Fight"
 
+
 var _map = [
 	[1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1],
 [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1],
@@ -126,7 +127,7 @@ func _ready():
 
 func move_player_to_start(player: Player):
 	player.position.x = start_offset_x
-	player.position.y = start_offset_y
+	player.position.y = start_offset_y - 32
 
 
 func print_map_array():
