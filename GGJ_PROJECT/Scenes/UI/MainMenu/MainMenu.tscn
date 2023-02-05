@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Fonts/sci-bi-glitched.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Fonts/sci-bi.ttf" type="DynamicFontData" id=2]
@@ -13,6 +13,10 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -54,7 +58,8 @@ text = "Commencer une partie"
 margin_left = 704.0
 margin_top = 288.0
 margin_right = 1024.0
-margin_bottom = 320.0
+margin_bottom = 336.0
+custom_fonts/font = SubResource( 7 )
 max_length = 20
 
 [node name="FamilyNameText" type="Label" parent="FamilyName"]
@@ -65,9 +70,9 @@ text = "Nom de famille"
 valign = 1
 
 [node name="FamilyNameSubText" type="Label" parent="FamilyName"]
-margin_top = 32.0
+margin_top = 56.0
 margin_right = 327.0
-margin_bottom = 73.0
+margin_bottom = 97.0
 custom_fonts/font = SubResource( 4 )
 text = "Le nom de famille définit le déroulement de votre
 partie. Laissez vide pour une partie aléatoire !"
