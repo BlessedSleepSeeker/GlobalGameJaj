@@ -11,6 +11,6 @@ func _ready():
 
 
 func act_one() -> BaseRoom:
-	game_state.current_room_type = "Dodge"
-	var demo = load("res://Scenes/Rooms/RoomTemplates/DodgeRoom/DodgeRoom.tscn")
+	game_state.current_room_type = "Boss"
+	var demo = load("res://Scenes/Rooms/RoomTemplates/DemoBoss/BossActOne.tscn")
 	return demo.instance()

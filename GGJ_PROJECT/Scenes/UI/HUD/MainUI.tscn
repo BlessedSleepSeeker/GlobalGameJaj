@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/UI/MainUI.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/HUD/MainUI.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/sci-bi.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Scenes/UI/LifeBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/HUD/LifeBar.tscn" type="PackedScene" id=3]
 
 [node name="MainUI" type="CanvasLayer"]
 script = ExtResource( 1 )
