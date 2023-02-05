@@ -37,7 +37,6 @@ func _ready():
 	# generate first room based on random
 	switch("Dodge")
 
-
 func generate_room(type: String):
 	match game_state.current_act:
 		0:
@@ -97,6 +96,12 @@ func _on_SceneTransition_transitionned():
 	emit_signal("door_exit")
 
 func _on_Player_death():
+	back_to_main_menu()
+
+func on_reset_run():
+	back_to_main_menu()
+
+func back_to_main_menu():
 	var mainMenu = load('res://Scenes/Ui/MainMenu/MainMenu.tscn').instance()
 	get_tree().root.call_deferred('add_child', mainMenu)
 	get_tree().root.call_deferred('remove_child', self)
