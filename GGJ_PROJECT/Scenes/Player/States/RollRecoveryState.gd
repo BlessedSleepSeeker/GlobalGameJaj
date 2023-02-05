@@ -5,7 +5,7 @@ var state_name = "RollRecovery"
 var frame_counter = 0
 
 func enter(_msg := {}) -> void:
-	pass
+	get_parent().connect("past_door", self, "_on_past_door")
 
 func update(_delta: float):
 	pass
@@ -19,3 +19,6 @@ func physics_update(_delta: float):
 			state_machine.transition_to("Run")
 		else:
 			 state_machine.transition_to("Idle")
+
+func _on_past_door():
+	state_machine.transition_to("PassDoor")

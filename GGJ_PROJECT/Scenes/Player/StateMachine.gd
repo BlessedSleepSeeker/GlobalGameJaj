@@ -5,7 +5,7 @@ extends Node
 # Emitted when transitioning to a new state.
 
 signal cinematic_end
-signal enemy_hit(hit_enemy, damage_taken)
+signal past_door
 signal transitioned(state_name)
 
 # Path to the initial active state. We export it to be able to pick the initial state in the inspector.
@@ -35,6 +35,8 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
+	if Input.is_action_pressed("test_button"):
+		emit_signal("past_door")
 
 
 # This function calls the current state's exit() function, then changes the active state,

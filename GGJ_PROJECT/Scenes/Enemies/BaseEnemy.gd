@@ -18,7 +18,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if HP <= 0:
-		hide()
+		queue_free()
 
 func _on_BaseEnemy_body_entered(body: Node):
 	if body is Player:
@@ -26,5 +26,4 @@ func _on_BaseEnemy_body_entered(body: Node):
 		
 func take_damage(damage_taken : int):
 	HP -= damage_taken
-	print(HP)
 

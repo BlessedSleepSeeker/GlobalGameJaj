@@ -17,7 +17,7 @@ func physics_update(delta: float):
 #	target.hit(1)
 	if target is BaseEnemy:
 		target.take_damage(player_vars.BASE_ATTACK_DAMAGE)
-		
+
 		get_parent().get_parent().get_node("HitRay").enabled = false
 	target = null
 	frame_counter += 1
