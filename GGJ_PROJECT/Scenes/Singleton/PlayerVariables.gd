@@ -7,6 +7,8 @@ export(float) var MOVE_SPEED = 150.0
 export(float) var ANGULAR_SPEED = PI * 4
 export(float) var ROLL_SPEED = 260.0
 
+export(float) var MOVE_SPEED_PASS_DOOR = 10.0
+
 export(int) var ROLL_STARTUP = 2
 export(int) var ROLL_ACTIVE = 14
 export(int) var ROLL_RECOVERY = 3

@@ -4,8 +4,9 @@ extends PlayerState
 var state_name = "RollRecovery"
 var frame_counter = 0
 
+
 func enter(_msg := {}) -> void:
-	get_parent().connect("past_door", self, "_on_past_door")
+	pass
 
 func update(_delta: float):
 	pass
@@ -20,5 +21,3 @@ func physics_update(_delta: float):
 		else:
 			 state_machine.transition_to("Idle")
 
-func _on_past_door():
-	state_machine.transition_to("PassDoor")

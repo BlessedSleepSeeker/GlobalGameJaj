@@ -19,8 +19,8 @@ var game_state
 var room_type
 var first_room := true
 
-signal past_door
-signal finished_load
+signal door_enter
+signal door_exit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,6 +75,8 @@ func instance_room():
 	add_child(room_instance)
 
 func switch(type: String) -> void:
+	print("emit door_enter")
+	emit_signal("door_enter")
 	room_type = type
 	$SceneTransition.transition()
 
@@ -90,6 +92,8 @@ func _on_SceneTransition_transitionned():
 
 	room_instance.move_player_to_start(player_instance)
 	game_state.current_room_number += 1
+	print("emit door_exit")
+	emit_signal("door_exit")
 
 func flush_room():
 	if room_instance:
