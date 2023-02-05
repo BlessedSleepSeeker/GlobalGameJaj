@@ -9,6 +9,7 @@ var DEFAULT_ROLL_RECOVERY = 3
 var	DEFAULT_ATTACK_STARTUP = 3
 var	DEFAULT_ATTACK_ACTIVE = 0
 var	DEFAULT_ATTACK_RECOVERY = 25
+var	DEFAULT_ATTACK_SPEED = 1.0
 var	DEFAULT_BASE_ATTACK_DAMAGE = 1
 
 # Called when the node enters the scene tree for the first time.

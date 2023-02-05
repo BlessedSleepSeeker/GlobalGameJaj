@@ -12,9 +12,10 @@ export(int) var ROLL_ACTIVE = 14
 export(int) var ROLL_RECOVERY = 3
 
 
-export(int) var ATTACK_STARTUP = 3
+export(int) var ATTACK_STARTUP = 10
 export(int) var ATTACK_ACTIVE = 0
 export(int) var ATTACK_RECOVERY = 25
+export(float) var ATTACK_SPEED = 1.0
 export(int) var BASE_ATTACK_DAMAGE = 1
 
 var v_direction := Vector2.ZERO
@@ -35,4 +36,5 @@ func reset_values():
 	ATTACK_STARTUP = default_values.DEFAULT_ATTACK_STARTUP
 	ATTACK_ACTIVE = default_values.DEFAULT_ATTACK_ACTIVE
 	ATTACK_RECOVERY = default_values.DEFAULT_ATTACK_RECOVERY
+	ATTACK_SPEED = default_values.DEFAULT_ATTACK_SPEED
 	BASE_ATTACK_DAMAGE = default_values.DEFAULT_BASE_ATTACK_DAMAGE
