@@ -5,8 +5,6 @@ extends Node
 # Emitted when transitioning to a new state.
 
 signal cinematic_end
-signal past_door
-signal finish_pass
 signal transitioned(state_name)
 
 # Path to the initial active state. We export it to be able to pick the initial state in the inspector.
@@ -23,6 +21,9 @@ func _ready() -> void:
 	for child in get_children():
 		child.state_machine = self
 	state.enter()
+	var scene_switcher = get_tree().root.get_node("Main")
+	scene_switcher.connect("door_enter", self, "_on_door_enter")
+	scene_switcher.connect("door_exit", self, "_on_door_exit")
 
 
 # The state machine subscribes to node callbacks and delegates them to the state objects.
@@ -36,8 +37,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
-	if Input.is_action_pressed("test_button"):
-		emit_signal("past_door")
 
 
 # This function calls the current state's exit() function, then changes the active state,
@@ -55,3 +54,11 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	state.enter(msg)
 	actual_state = state.name
 	emit_signal("transitioned", state.name)
+
+func _on_door_enter():
+	print("received door_enter")
+	transition_to("PassDoor")
+
+func _on_door_exit():
+	print("received door_exit")
+	transition_to("Idle")

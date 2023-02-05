@@ -4,7 +4,7 @@ extends PlayerState
 var state_name = "Run"
 
 func enter(_msg := {}) -> void:
-	get_parent().connect("past_door", self, "_on_past_door")
+	pass
 
 
 func update(_delta: float):
@@ -24,5 +24,3 @@ func physics_update(delta: float):
 	player_vars.velocity.y = player_vars.v_direction.y * player_vars.MOVE_SPEED
 	player.move_and_slide(player_vars.velocity)
 
-func _on_past_door():
-	state_machine.transition_to("PassDoor")

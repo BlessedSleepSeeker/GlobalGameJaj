@@ -4,6 +4,8 @@ extends PlayerState
 var state_name = "RollActive"
 var frame_counter = 0
 
+
+
 func enter(_msg := {}) -> void:
 	pass
 
