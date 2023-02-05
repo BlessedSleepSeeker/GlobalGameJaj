@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Player/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/States/IdleState.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scenes/Player/States/AttackStartupState.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/Player/States/PassDoorState.gd" type="Script" id=14]
 [ext_resource path="res://Assets/Player/Animation/slash.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sounds/swipe1.wav" type="AudioStream" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.09091
@@ -74,6 +75,9 @@ animation = "slash"
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+
+[node name="SoundEmitter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 1 )

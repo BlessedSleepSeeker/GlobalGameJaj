@@ -23,7 +23,7 @@ export(Resource) var _door_start # 2
 export(Resource) var _hole # 5
 export(Resource) var _object_destructible # 6
 export(Resource) var _object_indestructible # 7
-export(Resource) var _enemy_1 # 7 
+export(Resource) var _enemy_1 # 8 
 export(Resource) var _door_exit_1 # 3
 export(Resource) var _door_exit_2 # 4
 

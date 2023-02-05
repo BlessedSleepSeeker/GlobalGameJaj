@@ -11,6 +11,8 @@ func enter(_msg := {}) -> void:
 
 
 func update(delta: float) -> void:
+	if get_parent().get_parent().get_node("SlashAnim").visible :
+		get_parent().get_parent().get_node("SlashAnim").visible = false
 	player_vars.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	player.rotate_to_mouse(delta)
 	if player_vars.v_direction != Vector2.ZERO: 
