@@ -7,14 +7,15 @@ extends Area2D
 # var b = "text"
 
 export(int) var HP = 3
-export(float) var MOVE_SPEED_CHASE = 140.0
+export(float) var MOVE_SPEED_CHASE = 100.0
 export(float) var MOVE_SPEED_PATROL = 50.0
+export(float) var MOVE_SPEED_GOBACK = 30.0
 
 export(int) var DAMAGE = 1
 export(int) var ANGULAR_SPEED = PI
 
 enum states { PATROL, SEARCH, CHASE, BOUNCE, GOBACK }
-export(states) var cur_state = states.CHASE
+export(states) var cur_state = states.PATROL
 
 var right := Vector2(1, 0)
 var down := Vector2(0, 1)
@@ -122,22 +123,23 @@ func move(delta):
 			position += direction * delta * MOVE_SPEED_PATROL
 		states.CHASE:
 			position += direction * delta * MOVE_SPEED_CHASE
+		states.GOBACK:
+			position += direction * delta * MOVE_SPEED_GOBACK
 
 func bounce_(delta):
 	direction = direction * -1
 	cur_state = states.GOBACK
 
 func goback(delta):
-	if goback_duration <= 15:
+	if goback_duration <= 30:
 		move(delta)
 		goback_duration += 1
 	else:
 		goback_duration = 0
-		cur_state = states.PATROL
+		change_ai()
 
 
 func _on_BaseEnemy_body_entered(body: Node):
-	print(body.get_class())
 	if body is Player:
 		body.damage(self, DAMAGE)
 	if body is StaticBody2D or body is BaseDoor:
