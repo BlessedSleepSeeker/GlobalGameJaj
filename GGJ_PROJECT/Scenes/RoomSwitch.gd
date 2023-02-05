@@ -31,6 +31,7 @@ func _ready():
 	rng.state = hash(seeding.ROOM_GENERATION_SEED)
 	# generate first room based on random
 	player_instance = player.instance()
+	player_instance.connect('death', self, '_on_Player_death')
 	ui_instance = ui.instance()
 
 	# generate first room based on random
@@ -90,6 +91,11 @@ func _on_SceneTransition_transitionned():
 
 	room_instance.move_player_to_start(player_instance)
 	game_state.current_room_number += 1
+
+func _on_Player_death():
+	var mainMenu = load('res://Scenes/Ui/MainMenu/MainMenu.tscn').instance()
+	get_tree().root.call_deferred('add_child', mainMenu)
+	get_tree().root.call_deferred('remove_child', self)
 
 func flush_room():
 	if room_instance:
