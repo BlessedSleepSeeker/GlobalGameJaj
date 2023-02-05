@@ -4,7 +4,7 @@ extends PlayerState
 var state_name = "PassDoor"
 
 func enter(_msg := {}) -> void:
-	pass
+	get_parent().connect("finish_pass", self, "_on_finish")
 	
 func update(_delta: float):
 	pass
@@ -12,5 +12,5 @@ func update(_delta: float):
 func physics_update(_delta: float):
 	pass
 	
-func _on_past_door():
+func _on_finish():
 	state_machine.transition_to("Idle")
