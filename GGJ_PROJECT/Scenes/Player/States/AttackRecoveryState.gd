@@ -17,7 +17,7 @@ func physics_update(delta: float):
 	if frame_counter > (player_vars.ATTACK_RECOVERY):
 		frame_counter = 0
 		get_parent().get_parent().get_node("SlashAnim").visible = false	
-		if player_vars.v_direction != Vector2.ZERO: 
+		if player_vars.v_direction != Vector2.ZERO:
 			state_machine.transition_to("Run")
 		else:
 			 state_machine.transition_to("Idle")
