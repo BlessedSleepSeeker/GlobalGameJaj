@@ -53,15 +53,12 @@ func generate_room(type: String):
 func generate_room_act_one(type: String):
 	match type:
 		"Fight":
-			print('GENERATING FIGHT ROOM')
 			room_instance = $GeneratorFight.act_one()
 			print(room_instance)
 		"Dodge":
-			print('GENERATING DODGE ROOM')
 			room_instance = $GeneratorDodge.act_one()
 			print(room_instance)
 		"DodgePuzzle":
-			print('GENERATING DODGEPUZZLE ROOM')
 			room_instance = $GeneratorDodgePuzzle.act_one()
 			print(room_instance)
 		_:
@@ -77,7 +74,7 @@ func switch(type: String) -> void:
 	room_instance.move_player_to_start(player_instance)
 
 func flush_room():
-	remove_child(room_instance)
+	call_deferred("remove_child", room_instance)
 
 func instance_player():
 	add_child(player_instance)

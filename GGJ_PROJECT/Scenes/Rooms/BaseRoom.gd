@@ -108,7 +108,7 @@ func _ready():
 				ENEMY_1_SPAWN_POINT:
 					tile = _ground.instance()
 					var enemy = _enemy_1.instance()
-					add_child(enemy)
+					call_deferred("add_child", enemy)
 					enemy.position.x = offset_x
 					enemy.position.y = offset_y
 				VOID:
@@ -116,7 +116,7 @@ func _ready():
 				_:
 					is_void = true
 			if (!is_void):
-				add_child(tile)
+				call_deferred("add_child", tile)
 				tile.position.x = offset_x
 				tile.position.y = offset_y
 			offset_x += 32
