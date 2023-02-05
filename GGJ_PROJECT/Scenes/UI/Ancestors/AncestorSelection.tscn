@@ -22,19 +22,19 @@ custom_fonts/font = SubResource( 1 )
 text = "Selectionnez un ancêtre"
 
 [node name="AncestorButton" parent="." instance=ExtResource( 3 )]
-margin_left = 128.0
-margin_top = 544.0
-margin_right = -128.0
-margin_bottom = -64.0
+margin_left = 865.0
+margin_top = 192.0
+margin_right = -95.0
+margin_bottom = -80.0
 
 [node name="AncestorButton2" parent="." instance=ExtResource( 3 )]
-margin_left = 128.0
-margin_top = 368.0
-margin_right = -128.0
-margin_bottom = -240.0
+margin_left = 97.0
+margin_top = 192.0
+margin_right = -863.0
+margin_bottom = -80.0
 
 [node name="AncestorButton3" parent="." instance=ExtResource( 3 )]
-margin_left = 128.0
+margin_left = 480.0
 margin_top = 192.0
-margin_right = -128.0
-margin_bottom = -416.0
+margin_right = -480.0
+margin_bottom = -80.0

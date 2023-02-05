@@ -1,7 +1,7 @@
 extends Node
 
 const professionName = 'Corsaire'
-const description = "Aaaarhhh ! Tous au canons !"
+const description = "Aaaarhhh ! Tous aux canons !"
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
