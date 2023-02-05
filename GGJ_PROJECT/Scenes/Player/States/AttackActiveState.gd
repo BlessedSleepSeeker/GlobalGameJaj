@@ -4,6 +4,9 @@ extends PlayerState
 var state_name = "AttackActive"
 var frame_counter = 0
 
+func _ready():
+	pass
+
 func update(_delta: float):
 	pass
 

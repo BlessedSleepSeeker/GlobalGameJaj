@@ -21,4 +21,3 @@ func physics_update(delta: float):
 			state_machine.transition_to("Run")
 		else:
 			 state_machine.transition_to("Idle")
-	

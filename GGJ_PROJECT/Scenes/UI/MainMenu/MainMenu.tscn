@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Fonts/sci-bi-glitched.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Fonts/sci-bi.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.301961, 0.301961, 0.301961, 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="Panel"]
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 1 )
+text = "PROJECT MONKE"
+align = 1
+valign = 1
+
+[node name="StartGame" type="Button" parent="."]
+margin_left = 256.0
+margin_top = 256.0
+margin_right = 640.0
+margin_bottom = 384.0
+custom_fonts/font = SubResource( 5 )
+text = "Commencer une partie"
+
+[node name="FamilyName" type="LineEdit" parent="."]
+margin_left = 704.0
+margin_top = 288.0
+margin_right = 1024.0
+margin_bottom = 336.0
+custom_fonts/font = SubResource( 7 )
+max_length = 20
+
+[node name="FamilyNameText" type="Label" parent="FamilyName"]
+margin_top = -32.0
+margin_right = 137.0
+custom_fonts/font = SubResource( 2 )
+text = "Nom de famille"
+valign = 1
+
+[node name="FamilyNameSubText" type="Label" parent="FamilyName"]
+margin_top = 56.0
+margin_right = 327.0
+margin_bottom = 97.0
+custom_fonts/font = SubResource( 4 )
+text = "Le nom de famille définit le déroulement de votre
+partie. Laissez vide pour une partie aléatoire !"
+
+[node name="QuitGame" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 448.0
+margin_right = 832.0
+margin_bottom = 576.0
+custom_fonts/font = SubResource( 3 )
+text = "RIP Bozo"
+
+[connection signal="pressed" from="StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="text_changed" from="FamilyName" to="." method="_on_FamilyName_text_changed"]
+[connection signal="pressed" from="QuitGame" to="." method="_on_QuitGame_pressed"]

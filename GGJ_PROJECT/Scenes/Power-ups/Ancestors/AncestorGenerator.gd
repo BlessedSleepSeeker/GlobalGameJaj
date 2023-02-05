@@ -29,12 +29,12 @@ var pullAncestorAct5 = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var seeding = get_node("/root/Seeding")
-	rng.seed = hash(seeding.ANCESTOR_GENERATION_SEED.sha256_text())
-	rng.state = hash(seeding.ANCESTOR_GENERATION_SEED.sha256_text())
+	rng.seed = hash(seeding.ANCESTOR_GENERATION_SEED)
+	rng.state = hash(seeding.ANCESTOR_GENERATION_SEED)
 	rng.randi()
 
 	for i in range(pools.size()):
-		for j in 10:
+		for j in 3:
 			generateAncestor(i)
 
 func generateAncestor(poolIndex):
