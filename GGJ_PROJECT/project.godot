@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Enemies/BaseEnemy.gd"
 }, {
+"base": "StaticBody2D",
+"class": "BaseMovementBlocker",
+"language": "GDScript",
+"path": "res://Scenes/Rooms/Objects/BaseMovementBlocker.gd"
+}, {
 "base": "Node2D",
 "class": "BaseRoom",
 "language": "GDScript",
@@ -47,6 +52,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BaseDoor": "",
 "BaseEnemy": "",
+"BaseMovementBlocker": "",
 "BaseRoom": "",
 "Player": "",
 "PlayerState": "",
