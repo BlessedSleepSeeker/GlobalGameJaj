@@ -64,6 +64,7 @@ collision_mask = 2
 [node name="collisionShape" type="CollisionShape2D" parent="Sprite/Hitbox"]
 position = Vector2( 17.5, 1 )
 shape = SubResource( 7 )
+disabled = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.88, 0.939957 )
