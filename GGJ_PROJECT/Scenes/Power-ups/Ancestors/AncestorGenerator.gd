@@ -34,7 +34,7 @@ func _ready():
 	rng.randi()
 
 	for i in range(pools.size()):
-		for j in 10:
+		for j in 3:
 			generateAncestor(i)
 
 func generateAncestor(poolIndex):
