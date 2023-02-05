@@ -6,6 +6,7 @@ extends Node
 
 signal cinematic_end
 signal past_door
+signal finish_pass
 signal transitioned(state_name)
 
 # Path to the initial active state. We export it to be able to pick the initial state in the inspector.
