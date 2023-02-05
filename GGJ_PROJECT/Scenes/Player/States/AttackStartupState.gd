@@ -22,12 +22,14 @@ func physics_update(delta: float):
 	
 func play_sound():
 	var audio_player = get_parent().get_parent().get_node("SoundEmitter")
-#	var audio_stream_array = ["res://Assets/Sounds/swipe1.wav", "res://Assets/Sounds/swipe2.wav", "res://Assets/Sounds/swipe3.wav", "res://Assets/Sounds/swipe4.wav", "res://Assets/Sounds/swipe5.wav",]
-	randomize()
-#	var clip_to_play = audio_stream_array[randi() % audio_stream_array.size()]
-#	audio_player.set_stream(clip_to_play)
-	audio_player.pitch_scale = rand_range(0.5,1.0)
-	audio_player.play()
+	var audio_file = "res://Assets/Sounds/punch1.wav"
+	if File.new().file_exists(audio_file):
+		var sfx = load(audio_file)
+		audio_player.set_stream(sfx)
+		randomize()
+		audio_player.pitch_scale = rand_range(0.5,1.0)
+		audio_player.volume_db = -8
+		audio_player.play()
 	
 func play_animation():
 	var animation = get_parent().get_parent().get_node("SlashAnim")
