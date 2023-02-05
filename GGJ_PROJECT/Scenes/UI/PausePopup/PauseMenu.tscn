@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/sci-bi.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Sounds/buttonClick.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/UI/PausePopup/PauseMenu.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=2]
@@ -45,6 +46,9 @@ margin_right = 768.0
 margin_bottom = 544.0
 custom_fonts/font = SubResource( 3 )
 text = "Renier ses ancêtres"
+
+[node name="SoundEmitter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 
 [connection signal="pressed" from="UnpauseButton" to="." method="_on_UnpauseButton_pressed"]
 [connection signal="pressed" from="ResetRun" to="." method="_on_ResetRun_pressed"]

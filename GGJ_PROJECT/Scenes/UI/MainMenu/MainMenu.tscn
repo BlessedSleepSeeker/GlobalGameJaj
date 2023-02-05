@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Fonts/sci-bi-glitched.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/Fonts/sci-bi.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Sounds/buttonClick.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/UI/MainMenu/MainMenu.gd" type="Script" id=4]
 
 [sub_resource type="StyleBoxFlat" id=6]
@@ -85,6 +86,9 @@ margin_right = 832.0
 margin_bottom = 576.0
 custom_fonts/font = SubResource( 3 )
 text = "RIP Bozo"
+
+[node name="SoundEmitter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="pressed" from="StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="text_changed" from="FamilyName" to="." method="_on_FamilyName_text_changed"]

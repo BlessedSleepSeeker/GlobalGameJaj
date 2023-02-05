@@ -23,8 +23,18 @@ func _process(delta):
 
 func damage(sender: Node, damage: int):
 	print('Took damage %s from %s' % [damage, sender])
+	var audio_player = get_node("SoundEmitter")
+	var audio_file = "res://Assets/Sounds/damage1.wav"
+	if File.new().file_exists(audio_file):
+		var sfx = load(audio_file)
+		audio_player.set_stream(sfx)
+		randomize()
+		audio_player.pitch_scale = rand_range(0.9,1.3)
+		audio_player.volume_db = -3
+		audio_player.play()
 	player_vars.HP -= damage
 	if player_vars.HP <= 0:
+		yield(audio_player, "finished")
 		on_death(sender)
 
 func on_death(sender: Node):

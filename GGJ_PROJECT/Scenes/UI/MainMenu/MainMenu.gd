@@ -14,9 +14,14 @@ func _ready():
 	playerVariables.reset_values()
 
 func _on_QuitGame_pressed():
+	var audio_player = get_node("SoundEmitter")
+	audio_player.play()
+	yield(audio_player, "finished")
 	get_tree().quit()
 
 func _on_StartGame_pressed():
+	var audio_player = get_node("SoundEmitter")
+	audio_player.play()
 	seeding.MAIN_SEED = familyNameLibelle
 	seeding.generateSeeds()
 	get_tree().root.call_deferred('add_child', mainScene)

@@ -14,8 +14,13 @@ func set_is_paused(value):
 	visible = is_paused
 
 func _on_UnpauseButton_pressed():
+	var audio_player = get_node("SoundEmitter")
+	audio_player.play()
 	self.is_paused = false
 
 func _on_ResetRun_pressed():
+	var audio_player = get_node("SoundEmitter")
+	audio_player.play()
+	yield(audio_player, "finished")
 	self.is_paused = false
 	emit_signal('reset_run')
