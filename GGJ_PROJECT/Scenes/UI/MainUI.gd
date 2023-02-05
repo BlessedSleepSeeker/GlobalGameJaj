@@ -9,7 +9,7 @@ var format_string = "X = %d\nY = %d\nDir = %d\nState = %s\nInput = [%f, %f]"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_parent().get_node("BaseRoom/Player")
+	player = get_parent().get_node("Player")
 	state_machine = player.get_node("StateMachine")
 	label = $Margin/RowSplit/DebuggingDisplay
 

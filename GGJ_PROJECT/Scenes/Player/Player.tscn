@@ -79,3 +79,7 @@ script = ExtResource( 11 )
 
 [node name="PassDoor" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )

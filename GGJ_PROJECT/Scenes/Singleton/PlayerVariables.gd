@@ -1,5 +1,7 @@
 extends Node
+onready var default_values = get_node("/root/DefaultValues")
 
+export(int) var MAX_HP = 6
 export(int) var HP = 6
 export(float) var MOVE_SPEED = 150.0
 export(float) var ANGULAR_SPEED = PI * 4
@@ -22,3 +24,12 @@ var velocity := Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func reset_values():
+	HP = default_values.DEFAULT_PLAYER_HP
+	MOVE_SPEED = default_values.DEFAULT_MOVE_SPEED
+	ANGULAR_SPEED = default_values.DEFAULT_ANGULAR_SPEED
+	ROLL_STARTUP = default_values.DEFAULT_ROLL_STARTUP
+	ROLL_ACTIVE = default_values.DEFAULT_ROLL_ACTIVE
+	ROLL_RECOVERY = default_values.DEFAULT_ROLL_RECOVERY
+	ATTACK_SPEED = default_values.DEFAULT_ATTACK_SPEED
