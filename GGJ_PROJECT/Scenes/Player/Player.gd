@@ -14,6 +14,10 @@ func rotate_to_mouse(_delta):
 	player_vars.v_rotation = transform.x.angle_to(direction)
 	rotate(sign(player_vars.v_rotation) * min(_delta * player_vars.ANGULAR_SPEED, abs(player_vars.v_rotation)))
 
+func rotate_to_abs(degrees, _delta):
+	player_vars.v_rotation = degrees
+	rotate(sign(player_vars.v_rotation) * min(_delta * player_vars.ANGULAR_SPEED, abs(player_vars.v_rotation)))
+
 func _process(delta):
 	pass
 

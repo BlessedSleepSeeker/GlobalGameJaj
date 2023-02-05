@@ -4,8 +4,10 @@ extends PlayerState
 var state_name = "RollStartup"
 var frame_counter = 0
 
+
 func enter(_msg := {}) -> void:
 	player_vars.v_direction = (player.get_global_mouse_position() - player.position).normalized()
+
 func update(_delta: float):
 	pass
 
@@ -17,4 +19,3 @@ func physics_update(_delta: float):
 	if frame_counter > (player_vars.ROLL_STARTUP):
 		frame_counter = 0
 		state_machine.transition_to("RollActive")
-	
