@@ -10,6 +10,7 @@ func update(_delta: float):
 func physics_update(delta: float):
 	player_vars.v_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	player.rotate_to_mouse(delta)
+	get_parent().get_parent().get_node("Sprite/Hitbox/collisionShape").disabled = false
 	player_vars.velocity.x = player_vars.v_direction.x * player_vars.MOVE_SPEED
 	player_vars.velocity.y = player_vars.v_direction.y * player_vars.MOVE_SPEED
 	player.move_and_slide(player_vars.velocity)

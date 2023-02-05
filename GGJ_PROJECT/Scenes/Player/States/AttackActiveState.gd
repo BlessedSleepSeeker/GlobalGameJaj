@@ -16,13 +16,14 @@ func physics_update(delta: float):
 	player_vars.velocity.x = player_vars.v_direction.x * player_vars.MOVE_SPEED
 	player_vars.velocity.y = player_vars.v_direction.y * player_vars.MOVE_SPEED
 	player.move_and_slide(player_vars.velocity)
-	var target: Object = get_parent().get_parent().get_node("HitRay").get_collider()
-#	target.hit(1)
-	if target is BaseEnemy:
-		target.take_damage(player_vars.BASE_ATTACK_DAMAGE)
-		get_parent().get_parent().get_node("HitRay").enabled = false
 	frame_counter += 1
 	if frame_counter > (player_vars.ATTACK_ACTIVE):
 		frame_counter = 0
-		get_parent().get_parent().get_node("HitRay").enabled = true		
+		get_parent().get_parent().get_node("Sprite/Hitbox/collisionShape").disabled = true		
 		state_machine.transition_to("AttackRecovery")
+
+
+
+func _on_Hitbox_area_entered(area):
+	if area is BaseEnemy:
+		area.take_damage(player_vars.BASE_ATTACK_DAMAGE)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Player/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/States/IdleState.gd" type="Script" id=2]
@@ -16,6 +16,9 @@
 [ext_resource path="res://Scenes/Player/States/PassDoorState.gd" type="Script" id=14]
 [ext_resource path="res://Assets/Player/Animation/slash.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Sounds/punch1.wav" type="AudioStream" id=16]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 9.5, 8 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 9.09091
@@ -54,19 +57,17 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 
+[node name="Hitbox" type="Area2D" parent="Sprite"]
+z_index = 1
+collision_mask = 2
+
+[node name="collisionShape" type="CollisionShape2D" parent="Sprite/Hitbox"]
+position = Vector2( 17.5, 1 )
+shape = SubResource( 7 )
+
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.88, 0.939957 )
 shape = SubResource( 1 )
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="HitRay" type="RayCast2D" parent="."]
-scale = Vector2( 2, 2 )
-z_index = 1
-enabled = true
-cast_to = Vector2( 19, 0 )
-collision_mask = 2
-collide_with_areas = true
 
 [node name="SlashAnim" type="AnimatedSprite" parent="."]
 position = Vector2( 9, 1 )
@@ -74,7 +75,6 @@ scale = Vector2( 2.31833, 1 )
 z_index = 1
 frames = SubResource( 6 )
 animation = "slash"
-frame = 3
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
@@ -120,3 +120,5 @@ script = ExtResource( 11 )
 
 [node name="PassDoor" type="Node" parent="StateMachine"]
 script = ExtResource( 14 )
+
+[connection signal="area_entered" from="Sprite/Hitbox" to="StateMachine/AttackActive" method="_on_Hitbox_area_entered"]
