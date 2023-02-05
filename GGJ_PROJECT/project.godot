@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "BaseDoor",
+"language": "GDScript",
+"path": "res://Scenes/Rooms/Objects/Door.gd"
+}, {
+"base": "Area2D",
 "class": "BaseEnemy",
 "language": "GDScript",
 "path": "res://Scenes/Enemies/BaseEnemy.gd"
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/Player/StateMachine.gd"
 } ]
 _global_script_class_icons={
+"BaseDoor": "",
 "BaseEnemy": "",
 "BaseRoom": "",
 "Player": "",
