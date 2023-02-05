@@ -11,5 +11,6 @@ func _ready():
 	game_state = get_node("/root/GameState")
 
 func act_one() -> BaseRoom:
+	game_state.current_room_type = "Fight"
 	var demo = load("res://Scenes/Rooms/RoomTemplates/DemoRoomCombat/CombatRoom.tscn")
 	return demo.instance()

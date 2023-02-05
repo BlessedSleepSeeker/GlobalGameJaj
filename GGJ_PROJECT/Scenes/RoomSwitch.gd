@@ -16,6 +16,11 @@ var rng
 var seeding
 
 var game_state
+var room_type
+var first_room := true
+
+signal past_door
+signal finished_load
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,11 +32,10 @@ func _ready():
 	# generate first room based on random
 	player_instance = player.instance()
 	ui_instance = ui.instance()
-	instance_player()
-	instance_ui()
-	generate_room("Fight")
-	instance_room()
-	room_instance.move_player_to_start(player_instance)
+
+	# generate first room based on random
+	switch("Dodge")
+
 
 func generate_room(type: String):
 	match game_state.current_act:
@@ -61,6 +65,9 @@ func generate_room_act_one(type: String):
 		"DodgePuzzle":
 			room_instance = $GeneratorDodgePuzzle.act_one()
 			print(room_instance)
+		"Boss":
+			room_instance = $GeneratorBoss.act_one()
+			print(room_instance)
 		_:
 			room_instance = $GeneratorFight.act_one()
 
@@ -68,16 +75,28 @@ func instance_room():
 	add_child(room_instance)
 
 func switch(type: String) -> void:
+	room_type = type
+	$SceneTransition.transition()
+
+func _on_SceneTransition_transitionned():
 	flush_room()
-	generate_room(type)
+	generate_room(room_type)
 	instance_room()
+	
+	if first_room:
+		first_room = not first_room
+		instance_player()
+		instance_ui()
+
 	room_instance.move_player_to_start(player_instance)
+	game_state.current_room_number += 1
 
 func flush_room():
-	call_deferred("remove_child", room_instance)
+	if room_instance:
+		call_deferred("remove_child", room_instance)
 
 func instance_player():
-	add_child(player_instance)
+	call_deferred("add_child", player_instance)
 
 func instance_ui():
-	add_child(ui_instance)
+	call_deferred("add_child", ui_instance)
