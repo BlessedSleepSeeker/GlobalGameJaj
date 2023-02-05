@@ -32,6 +32,7 @@ func reset_values():
 	HP = default_values.DEFAULT_PLAYER_HP
 	MOVE_SPEED = default_values.DEFAULT_MOVE_SPEED
 	ANGULAR_SPEED = default_values.DEFAULT_ANGULAR_SPEED
+	ROLL_SPEED = default_values.DEFAULT_ROLL_SPEED
 	ROLL_STARTUP = default_values.DEFAULT_ROLL_STARTUP
 	ROLL_ACTIVE = default_values.DEFAULT_ROLL_ACTIVE
 	ROLL_RECOVERY = default_values.DEFAULT_ROLL_RECOVERY

@@ -26,15 +26,16 @@ signal door_exit
 func _ready():
 	seeding = get_node("/root/Seeding")
 	game_state = get_node("/root/GameState")
-	rng = seeding.ROOM_GENERATOR
-	rng.seed = hash(seeding.ROOM_GENERATION_SEED)
-	rng.state = hash(seeding.ROOM_GENERATION_SEED)
+
+	# Setting RNG up
+	
 	# generate first room based on random
 	player_instance = player.instance()
+	player_instance.connect('death', self, '_on_Player_death')
 	ui_instance = ui.instance()
 
 	# generate first room based on random
-	switch("Dodge")
+	switch("Fight")
 
 
 func generate_room(type: String):
@@ -82,18 +83,26 @@ func switch(type: String) -> void:
 
 func _on_SceneTransition_transitionned():
 	flush_room()
-	generate_room(room_type)
-	instance_room()
 	
 	if first_room:
 		first_room = not first_room
 		instance_player()
 		instance_ui()
+	
+	generate_room(room_type)
+	instance_room()
+	
+	
 
 	room_instance.move_player_to_start(player_instance)
 	game_state.current_room_number += 1
 	print("emit door_exit")
 	emit_signal("door_exit")
+
+func _on_Player_death():
+	var mainMenu = load('res://Scenes/Ui/MainMenu/MainMenu.tscn').instance()
+	get_tree().root.call_deferred('add_child', mainMenu)
+	get_tree().root.call_deferred('remove_child', self)
 
 func flush_room():
 	if room_instance:

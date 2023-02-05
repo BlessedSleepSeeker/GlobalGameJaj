@@ -2,6 +2,7 @@
 class_name Player
 extends KinematicBody2D
 
+signal death
 onready var player_vars = get_node("/root/PlayerVariables")
 
 # Called when the node enters the scene tree for the first time.
@@ -28,4 +29,4 @@ func damage(sender: Node, damage: int):
 
 func on_death(sender: Node):
 	print('YOU DIED FROM %s' % sender)
-	queue_free()
+	emit_signal('death')
