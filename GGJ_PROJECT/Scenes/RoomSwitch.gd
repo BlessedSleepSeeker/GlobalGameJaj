@@ -22,8 +22,8 @@ func _ready():
 	seeding = get_node("/root/Seeding")
 	game_state = get_node("/root/GameState")
 	rng = seeding.ROOM_GENERATOR
-	rng.seed = hash(seeding.ROOM_GENERATION_SEED.sha256_text())
-	rng.state = hash(seeding.ROOM_GENERATION_SEED.sha256_text())
+	rng.seed = hash(seeding.ROOM_GENERATION_SEED)
+	rng.state = hash(seeding.ROOM_GENERATION_SEED)
 	# generate first room based on random
 	player_instance = player.instance()
 	ui_instance = ui.instance()
